@@ -124,6 +124,54 @@ signal door_closed(door_id: String)
 signal vehicle_entered(vehicle_id: String, occupant_id: int)
 signal vehicle_exited(vehicle_id: String, occupant_id: int)
 
+# ── Character State ────────────────────────────────────────────────────────────
+signal character_state_changed(character_id: int, old_state: String, new_state: String)
+signal character_jumped(character_id: int)
+signal character_landed(character_id: int, fall_speed: float)
+signal character_crouched(character_id: int, is_crouching: bool)
+signal character_sprinted(character_id: int, is_sprinting: bool)
+signal character_slid(character_id: int)
+signal character_vaulted(character_id: int)
+signal character_entered_water(character_id: int)
+signal character_exited_water(character_id: int)
+
+# ── Weapon Handler ─────────────────────────────────────────────────────────────
+signal weapon_drawn(owner_id: int, weapon_id: String, slot: String)
+signal weapon_holstered(owner_id: int, slot: String)
+signal weapon_slot_changed(owner_id: int, from_slot: String, to_slot: String)
+signal fire_mode_changed(owner_id: int, weapon_id: String, mode: int)
+
+# ── Cover System ───────────────────────────────────────────────────────────────
+signal ai_reached_cover(agent_id: int, cover_path: NodePath)
+signal ai_left_cover(agent_id: int)
+signal ai_alerted(agent_id: int, position: Vector3)
+signal ai_retreating(agent_id: int)
+
+# ── Loot & Drops ───────────────────────────────────────────────────────────────
+signal airdrop_incoming(position: Vector3, eta: float)
+signal airdrop_landed(position: Vector3, item_ids: Array)
+signal container_opened(container_id: String, opener_id: int)
+
+# ── Interaction ────────────────────────────────────────────────────────────────
+signal interact_started(interactor_id: int, target_node: NodePath)
+signal interact_completed(interactor_id: int, target_node: NodePath)
+signal interact_cancelled(interactor_id: int, target_node: NodePath)
+
+# ── Match Scoring ──────────────────────────────────────────────────────────────
+signal leaderboard_updated(leaderboard: Array)
+signal match_score_changed(player_id: int, new_score: int, delta: int)
+signal player_placement_set(player_id: int, placement: int)
+
+# ── Replication ────────────────────────────────────────────────────────────────
+signal entity_spawned(entity_id: int, entity_type: String, position: Vector3)
+signal entity_despawned(entity_id: int)
+signal authority_transferred(entity_id: int, new_peer_id: int)
+
+# ── Input Context ──────────────────────────────────────────────────────────────
+signal input_context_pushed(context_name: String)
+signal input_context_popped(context_name: String)
+signal input_rebound(action: String, binding: Dictionary)
+
 # ── Debug / Dev ────────────────────────────────────────────────────────────────
 signal debug_command_issued(command: String, args: Array)
 signal performance_warning(system: String, message: String, value: float)
@@ -131,5 +179,5 @@ signal log_entry_added(level: int, category: String, message: String)
 
 
 func _ready() -> void:
-	name = "EventBus"
-	Logger.info("EventBus", "Global event bus initialized.")
+        name = "EventBus"
+        Logger.info("EventBus", "Global event bus initialized.")

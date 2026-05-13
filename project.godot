@@ -48,6 +48,19 @@ VFXManager="*res://src/vfx/vfx_manager.gd"
 NetworkManager="*res://src/network/network_manager.gd"
 APIManager="*res://src/network/api/api_manager.gd"
 
+; ─── Gameplay World Systems ─────────────────────────────────────────────────
+CoverSystem="*res://src/gameplay/cover/cover_system.gd"
+LootManager="*res://src/world/loot/loot_manager.gd"
+
+; ─── Network ─────────────────────────────────────────────────────────────────
+StateSync="*res://src/network/sync/state_sync.gd"
+
+; ─── Match Systems ───────────────────────────────────────────────────────────
+MatchScoring="*res://src/gameplay/match/match_scoring.gd"
+
+; ─── Component Registry ──────────────────────────────────────────────────────
+ComponentSystem="*res://src/core/systems/component_system.gd"
+
 ; ─── Debug / Dev Tools ──────────────────────────────────────────────────────
 DebugConsole="*res://src/core/debug/debug_console.gd"
 DevTools="*res://src/core/debug/dev_tools.gd"
