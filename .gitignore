@@ -194,6 +194,25 @@ cython_debug/
 #   Learn more at https://abstra.io/docs
 .abstra/
 
+# ── Godot 4 ────────────────────────────────────────────────────────────────────
+.godot/
+*.import
+export.cfg
+export_presets.cfg
+*.translation
+
+# ── Godot Build Output ─────────────────────────────────────────────────────────
+*.pck
+*.apk
+*.aab
+*.ipa
+*.x86_64
+*.arm64
+
+# ── BrickForce AI Tools ────────────────────────────────────────────────────────
+tools/.gdignore
+docs/.gdignore
+
 # Visual Studio Code
 #   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
 #   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore

@@ -1,0 +1,180 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="BrickForce AI"
+config/version="0.1.0-alpha"
+config/description="Tactical offline battle royale — human vs AI"
+config/tags=["tactical","battle-royale","ai","squad"]
+run/main_scene="res://scenes/autoloads/bootstrap.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://assets/textures/icon.svg"
+
+[autoload]
+
+; ─── Core Infrastructure ───────────────────────────────────────────────────
+EventBus="*res://src/core/events/event_bus.gd"
+Logger="*res://src/core/logging/logger.gd"
+ObjectPool="*res://src/core/pooling/object_pool.gd"
+PerformanceMonitor="*res://src/core/performance/performance_monitor.gd"
+
+; ─── Game Systems ───────────────────────────────────────────────────────────
+GameManager="*res://src/core/managers/game_manager.gd"
+SceneManager="*res://src/core/managers/scene_manager.gd"
+SettingsManager="*res://src/core/managers/settings_manager.gd"
+SaveManager="*res://src/save/save_manager.gd"
+InputManager="*res://src/core/managers/input_manager.gd"
+TimeManager="*res://src/core/managers/time_manager.gd"
+
+; ─── Economy & Inventory ────────────────────────────────────────────────────
+CurrencyManager="*res://src/economy/currency/currency_manager.gd"
+InventoryManager="*res://src/economy/inventory/inventory_manager.gd"
+ShopManager="*res://src/economy/shop/shop_manager.gd"
+CosmeticManager="*res://src/economy/cosmetics/cosmetic_manager.gd"
+
+; ─── Audio & VFX ────────────────────────────────────────────────────────────
+AudioManager="*res://src/audio/audio_manager.gd"
+VFXManager="*res://src/vfx/vfx_manager.gd"
+
+; ─── Network Layer ──────────────────────────────────────────────────────────
+NetworkManager="*res://src/network/network_manager.gd"
+APIManager="*res://src/network/api/api_manager.gd"
+
+; ─── Debug / Dev Tools ──────────────────────────────────────────────────────
+DebugConsole="*res://src/core/debug/debug_console.gd"
+DevTools="*res://src/core/debug/dev_tools.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/return_value_discarded=0
+gdscript/warnings/unsafe_property_access=2
+gdscript/warnings/unsafe_method_access=2
+gdscript/warnings/unsafe_cast=2
+gdscript/warnings/unsafe_call_argument=2
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/vsync/vsync_mode=1
+window/energy_saving/keep_screen_on=false
+
+[editor]
+
+movie_writer/fps=60
+
+[filesystem]
+
+import/blender/enabled=false
+
+[input]
+
+move_forward={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)]
+}
+move_backward={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)]
+}
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)]
+}
+jump={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)]
+}
+crouch={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)]
+}
+sprint={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194326,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)]
+}
+fire={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)]
+}
+aim={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)]
+}
+reload={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)]
+}
+squad_command={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)]
+}
+open_inventory={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)]
+}
+open_map={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"location":0,"echo":false,"script":null)]
+}
+debug_console={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":96,"key_label":0,"unicode":96,"location":0,"echo":false,"script":null)]
+}
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"
+3d_physics/layer_3="enemy"
+3d_physics/layer_4="projectile"
+3d_physics/layer_5="interactable"
+3d_physics/layer_6="cover"
+3d_physics/layer_7="zone"
+3d_physics/layer_8="loot"
+3d_physics/layer_9="trigger"
+3d_physics/layer_10="vehicle"
+3d_physics/layer_11="squad_member"
+3d_physics/layer_12="destructible"
+
+[network]
+
+limits/debugger/max_queued_messages=2048
+
+[physics]
+
+3d/physics_engine="GodotPhysics3D"
+3d/run_on_separate_thread=true
+common/physics_ticks_per_second=60
+common/max_physics_steps_per_frame=8
+
+[rendering]
+
+renderer/rendering_method="forward_plus"
+textures/vram_compression/import_etc2_astc=false
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=0
+scaling_3d/mode=0
+scaling_3d/scale=1.0
+lights_and_shadows/directional_shadow/size=4096
+environment/defaults/default_environment="res://resources/config/default_environment.tres"
